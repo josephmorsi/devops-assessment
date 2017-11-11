@@ -1,0 +1,9 @@
+---
+
+- hosts: all              // define 'docker' as our action target
+  remote_user: vagrant
+  become: yes
+  become_method: sudo
+  serial: 1          //define the action will be done one by one
+  roles:
+    - role: docker

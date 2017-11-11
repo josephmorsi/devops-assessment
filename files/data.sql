@@ -1,0 +1,11 @@
+CREATE DATABASE test;
+
+GRANT ALL PRIVILEGES ON *.* TO 'test'@'%' IDENTIFIED BY 'test';
+
+USE test;
+
+CREATE TABLE test ( record VARCHAR(50) );
+
+INSERT INTO test (record) VALUES ("CHECKRECIPIENT");
+INSERT INTO test (record) VALUES ("CHALLENGE");
+

@@ -1,0 +1,22 @@
+---
+
+- name: debug
+  debug: var=mysql.root_password
+
+- name: Prepare MySQL root password (1/2)
+  debconf: name='mysql-server' question='mysql-server/root_password' value='{{ mysql.root_password }}' vtype='password'
+
+- name: Prepare MySQL root password (2/2)
+  debconf: name='mysql-server' question='mysql-server/root_password_again' value='{{ mysql.root_password }}' vtype='password'
+
+- name: Install MySQL
+  apt: package={{ item }} state=installed force=yes update_cache=yes cache_valid_time=3600
+  when: ansible_os_family == 'Debian'
+  with_items:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb
+
+
+- name: copy database.sql to server
+  template: src=/files/database.sql dest=/tmp/database.sql owner=root group=root
