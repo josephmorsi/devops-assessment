@@ -71,8 +71,11 @@ assessment.*
 
 There's a file `/etc/motd`, but nothing is displayed when you ssh in. Can you
 fix this?
-             @@@@ sudo nano /etc/ssh/sshd_config and change PrintMotd to yes
-
+```
+YOUR ANSWER GOES HERE
+ sudo nano /etc/ssh/sshd_config and change PrintMotd to yes
+```
+ 
 ### Task 3: Install Docker
 
 - Install Docker (or another preferred container runtime) on the VM.
